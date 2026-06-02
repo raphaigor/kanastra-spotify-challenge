@@ -1,0 +1,38 @@
+import type { ptBR } from "./pt-BR";
+
+export const enUS = {
+  artist: "Artist",
+  artistSearch: "Search artist",
+  artistSearchPlaceholder: "Artist name",
+  albums: "Albums",
+  albumSearch: "Filter albums",
+  albumSearchPlaceholder: "Album name",
+  allArtists: "Artists",
+  popularity: "Popularity",
+  followers: "Followers",
+  topTracks: "Top tracks",
+  openSpotify: "Open in Spotify",
+  previous: "Previous",
+  next: "Next",
+  page: "Page",
+  of: "of",
+  loadingArtists: "Searching artists...",
+  loadingDetail: "Loading discography...",
+  loadingAlbums: "Refreshing albums...",
+  emptyArtists: "No artists found.",
+  emptyAlbums: "No albums found.",
+  selectArtist: "Choose an artist to explore popularity, songs and albums.",
+  configError:
+    "Configure Spotify credentials in .env.local before querying the API.",
+  genericArtistError: "Could not load artists.",
+  genericDetailError: "Could not load artist details.",
+  genericAlbumsError: "Could not load albums.",
+  retry: "Try again",
+  language: "Language",
+  tracks: "tracks",
+  albumsPerPage: "20 per page",
+  heroTitle: "Spotify",
+  heroCopy:
+    "A responsive experience to search artists, inspect popularity, top songs and browse their discography.",
+  challengeLabel: "Kanastra Frontend Challenge",
+} satisfies Record<keyof typeof ptBR, string>;
