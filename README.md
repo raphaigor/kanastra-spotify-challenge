@@ -118,10 +118,11 @@ A listagem de álbuns usa paginação manual com 20 itens por página. O filtro 
 
 ## Como rodar o projeto
 
-Versão recomendada do Node.js:
+### Requisitos
 
 ```bash
-24.16.0
+Node.js 24.16.0
+pnpm 10+
 ```
 
 Crie `.env.local` a partir de `.env.example`:
@@ -134,13 +135,13 @@ SPOTIFY_CLIENT_SECRET=
 Instale as dependências:
 
 ```bash
-npm install
+pnpm install
 ```
 
 Rode em desenvolvimento:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Acesse:
@@ -151,10 +152,10 @@ http://localhost:3000
 
 ## Scripts disponíveis
 
-- `npm run dev`: inicia o servidor de desenvolvimento.
-- `npm run build`: gera a build de produção.
-- `npm run start`: executa a build de produção.
-- `npm run lint`: roda o ESLint.
+- `pnpm dev`: inicia o servidor de desenvolvimento.
+- `pnpm build`: gera a build de produção.
+- `pnpm start`: executa a build de produção.
+- `pnpm lint`: roda o ESLint.
 
 ## Decisões técnicas
 
