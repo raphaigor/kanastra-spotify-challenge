@@ -15,11 +15,7 @@ export function ArtistDetails() {
   const detailQuery = useArtistDetails(selectedArtistId);
 
   if (!selectedArtistId) {
-    return (
-      <section className="flex min-h-[520px] items-center justify-center rounded-lg bg-neutral-100 p-8 text-center text-neutral-600">
-        {t("selectArtist")}
-      </section>
-    );
+    return <ArtistDetailsSkeleton />;
   }
 
   if (detailQuery.isLoading) {
@@ -40,7 +36,10 @@ export function ArtistDetails() {
   const { artist, topTracks } = detailQuery.data;
 
   return (
-    <section className="overflow-hidden rounded-lg bg-neutral-100 shadow-2xl shadow-black/20">
+    <section
+      className="animate-fade-slide-up overflow-hidden rounded-lg bg-neutral-100 shadow-2xl shadow-black/20"
+      key={artist.id}
+    >
       <div className="relative min-h-[260px] bg-neutral-950 p-6 text-white md:p-8">
         <Image
           alt=""

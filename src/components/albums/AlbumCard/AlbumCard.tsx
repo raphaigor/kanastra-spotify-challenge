@@ -8,7 +8,7 @@ export function AlbumCard({ album }: { album: Album }) {
 
   return (
     <a
-      className="group rounded-lg border border-neutral-200 bg-white p-3 transition hover:-translate-y-1 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-950/10"
+      className="group rounded-lg border border-neutral-200 bg-white p-3 shadow-sm shadow-neutral-950/5 transition-all duration-200 ease-out hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-950/15 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02]"
       href={album.external_urls.spotify}
       rel="noreferrer"
       target="_blank"
@@ -16,7 +16,7 @@ export function AlbumCard({ album }: { album: Album }) {
       <span className="relative block aspect-square overflow-hidden rounded-md bg-neutral-200">
         <Image
           alt=""
-          className="object-cover transition duration-300 group-hover:scale-105"
+          className="object-cover transition-transform duration-300 ease-out motion-safe:group-hover:scale-105"
           fill
           sizes="(max-width: 768px) 45vw, 180px"
           src={getImageUrl(album.images)}

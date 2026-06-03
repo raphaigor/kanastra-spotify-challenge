@@ -17,8 +17,11 @@ A aplicação permite pesquisar artistas, selecionar um resultado, visualizar po
 - Filtro de álbuns por nome.
 - Estados de loading, erro e lista vazia.
 - Skeleton loading para artistas, detalhes e álbuns.
+- Animações suaves de interação em cards, inputs e seleção de artista.
+- Transições entre estados de carregamento e conteúdo.
 - Interface responsiva para mobile e desktop.
 - Tradução tokenizada em `pt-BR` e `en-US`.
+- Persistência do idioma em `localStorage` para manter a preferência em futuras entradas na tela.
 - Consumo seguro da API do Spotify via API Routes do Next.js.
 - Testes unitários mínimos com Vitest e React Testing Library.
 
@@ -137,6 +140,8 @@ A internacionalização usa dicionários tokenizados em:
 
 O tipo `TranslationKey` é derivado do dicionário base, reduzindo o risco de usar chaves inexistentes.
 
+A preferência de idioma é salva em `localStorage`, então o usuário mantém a escolha ao recarregar a página ou retornar ao app em uma próxima visita.
+
 ## Paginação e filtros
 
 A busca de artistas usa filtro por nome com debounce para evitar chamadas excessivas.
@@ -194,13 +199,13 @@ http://localhost:3000
 - **Query keys centralizadas**: reduz inconsistências e facilita invalidar/refatorar queries.
 - **Mappers explícitos**: deixam claro onde a resposta da API externa pode ser convertida para modelos internos.
 - **Context API enxuto**: usado apenas para estado global de UI, não para cache de dados remotos.
+- **Persistência de preferência de UI**: o idioma selecionado é salvo em `localStorage` para melhorar a continuidade da experiência sem envolver estado assíncrono ou backend.
 - **Debounce nos filtros**: melhora UX e reduz chamadas desnecessárias.
 - **Skeleton loading contextual**: usa placeholders com a mesma estrutura visual da tela final, evitando loaders genéricos em áreas previsíveis.
+- **Animações sem biblioteca externa**: transições sutis com Tailwind CSS e CSS nativo, respeitando `prefers-reduced-motion`.
 - **Testes focados em contrato e comportamento**: cobrem componentes de domínio, utilitários e mappers sem amarrar os testes a detalhes frágeis de implementação.
 
 ## Melhorias futuras
 
 - Testes E2E com Cypress.
-- Animações de transição entre artista e discografia.
-- Persistência do idioma em localStorage.
 - Novos filtros usando gêneros, popularidade ou tipo de lançamento da API do Spotify.

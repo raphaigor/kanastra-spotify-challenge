@@ -6,8 +6,13 @@ import {
   useContext,
   useMemo,
   useState,
+  useSyncExternalStore,
 } from "react";
 import { dictionaries, type Locale, type TranslationKey } from "@/i18n";
+
+const LOCALE_STORAGE_KEY = "spotify-explorer:locale";
+const LOCALE_CHANGE_EVENT = "spotify-explorer:locale-change";
+const DEFAULT_LOCALE: Locale = "pt-BR";
 
 type UIContextValue = {
   locale: Locale;
@@ -19,18 +24,53 @@ type UIContextValue = {
 
 const UIContext = createContext<UIContextValue | null>(null);
 
+function isLocale(value: string | null): value is Locale {
+  return value === "pt-BR" || value === "en-US";
+}
+
+function getLocaleSnapshot(): Locale {
+  const storedLocale = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+
+  return isLocale(storedLocale) ? storedLocale : DEFAULT_LOCALE;
+}
+
+function getServerLocaleSnapshot(): Locale {
+  return DEFAULT_LOCALE;
+}
+
+function subscribeToLocaleChanges(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(LOCALE_CHANGE_EVENT, onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(LOCALE_CHANGE_EVENT, onStoreChange);
+  };
+}
+
 export function UIProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("pt-BR");
+  const locale = useSyncExternalStore(
+    subscribeToLocaleChanges,
+    getLocaleSnapshot,
+    getServerLocaleSnapshot,
+  );
   const [selectedArtistId, setSelectedArtistId] = useState<string | null>(null);
 
   const value = useMemo<UIContextValue>(
-    () => ({
-      locale,
-      setLocale,
-      selectedArtistId,
-      setSelectedArtistId,
-      t: (key) => dictionaries[locale][key],
-    }),
+    () => {
+      const setLocale = (nextLocale: Locale) => {
+        window.localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);
+        window.dispatchEvent(new Event(LOCALE_CHANGE_EVENT));
+      };
+
+      return {
+        locale,
+        setLocale,
+        selectedArtistId,
+        setSelectedArtistId,
+        t: (key) => dictionaries[locale][key],
+      };
+    },
     [locale, selectedArtistId],
   );
 

@@ -5,7 +5,7 @@ export function Skeleton({ className }: { className?: string }) {
     <span
       aria-hidden
       className={clsx(
-        "block animate-pulse rounded-md bg-neutral-200/80",
+        "animate-soft-fade block animate-pulse rounded-md bg-neutral-200/80",
         className,
       )}
     />
@@ -14,7 +14,7 @@ export function Skeleton({ className }: { className?: string }) {
 
 export function ArtistListSkeleton() {
   return (
-    <div className="grid gap-3">
+    <div className="animate-soft-fade grid gap-3">
       {Array.from({ length: 6 }).map((_, index) => (
         <div
           className="grid min-h-28 grid-cols-[72px_1fr] gap-4 rounded-lg border border-white/10 bg-white/[0.07] p-3"
@@ -34,7 +34,7 @@ export function ArtistListSkeleton() {
 
 export function ArtistDetailsSkeleton() {
   return (
-    <section className="overflow-hidden rounded-lg bg-neutral-100 shadow-2xl shadow-black/20">
+    <section className="animate-soft-fade overflow-hidden rounded-lg bg-neutral-100 shadow-2xl shadow-black/20">
       <div className="relative min-h-[360px] bg-neutral-900 p-6 md:p-8">
         <div className="flex h-full min-h-[300px] flex-col justify-end gap-4">
           <Skeleton className="h-8 w-24 bg-emerald-300/40" />
@@ -65,7 +65,7 @@ export function ArtistDetailsSkeleton() {
 
 export function AlbumGridSkeleton() {
   return (
-    <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4 xl:grid-cols-5">
+    <div className="animate-soft-fade mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4 xl:grid-cols-5">
       {Array.from({ length: 10 }).map((_, index) => (
         <div
           className="rounded-lg border border-neutral-200 bg-white p-3"

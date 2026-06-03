@@ -27,10 +27,10 @@ export function Input({
       {label}
       <span
         className={clsx(
-          "flex min-h-11 items-center gap-3 rounded-lg border px-3",
+          "flex min-h-11 items-center gap-3 rounded-lg border px-3 transition-all duration-200 ease-out focus-within:-translate-y-px focus-within:shadow-lg",
           isDark
-            ? "border-white/15 bg-white/10 text-white shadow-sm backdrop-blur"
-            : "border-neutral-300 bg-white text-neutral-950",
+            ? "border-white/15 bg-white/10 text-white shadow-sm backdrop-blur focus-within:border-emerald-300/80 focus-within:shadow-emerald-950/40"
+            : "border-neutral-300 bg-white text-neutral-950 focus-within:border-emerald-500 focus-within:shadow-emerald-950/10",
         )}
       >
         {icon ?? (

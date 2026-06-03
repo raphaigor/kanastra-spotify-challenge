@@ -3,7 +3,7 @@ import type { ptBR } from "./pt-BR";
 export const enUS = {
   artist: "Artist",
   artistSearch: "Search artist",
-  artistSearchPlaceholder: "Artist name",
+  artistSearchPlaceholder: "Artist name and Gener",
   albums: "Albums",
   albumSearch: "Filter albums",
   albumSearchPlaceholder: "Album name",
@@ -18,7 +18,6 @@ export const enUS = {
   of: "of",
   emptyArtists: "No artists found.",
   emptyAlbums: "No albums found.",
-  selectArtist: "Choose an artist to explore popularity, songs and albums.",
   configError:
     "Configure Spotify credentials in .env.local before querying the API.",
   genericArtistError: "Could not load artists.",

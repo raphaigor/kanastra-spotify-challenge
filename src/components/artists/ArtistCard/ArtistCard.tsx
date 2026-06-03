@@ -16,10 +16,10 @@ export function ArtistCard({ artist }: ArtistCardProps) {
   return (
     <button
       className={clsx(
-        "group grid min-h-28 grid-cols-[72px_1fr] gap-4 rounded-lg border p-3 text-left transition",
+        "group grid min-h-28 grid-cols-[72px_1fr] gap-4 rounded-lg border p-3 text-left transition-all duration-200 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02]",
         active
-          ? "border-emerald-300 bg-emerald-300/15 shadow-lg shadow-emerald-950/20"
-          : "border-white/10 bg-white/[0.07] hover:border-emerald-300/70 hover:bg-white/[0.11]",
+          ? "border-emerald-300 bg-emerald-300/15 shadow-lg shadow-emerald-950/20 hover:shadow-xl hover:shadow-emerald-950/30"
+          : "border-white/10 bg-white/[0.07] shadow-sm shadow-black/10 hover:border-emerald-300/70 hover:bg-white/[0.11] hover:shadow-xl hover:shadow-emerald-950/25",
       )}
       onClick={() => setSelectedArtistId(artist.id)}
       type="button"
@@ -27,7 +27,7 @@ export function ArtistCard({ artist }: ArtistCardProps) {
       <div className="relative h-[72px] w-[72px] overflow-hidden rounded-md bg-neutral-900">
         <Image
           alt=""
-          className="object-cover transition duration-300 group-hover:scale-105"
+          className="object-cover transition-transform duration-300 ease-out motion-safe:group-hover:scale-105"
           fill
           sizes="72px"
           src={getImageUrl(artist.images)}

@@ -1,7 +1,7 @@
 export const ptBR = {
   artist: "Artista",
   artistSearch: "Buscar artista",
-  artistSearchPlaceholder: "Nome do artista",
+  artistSearchPlaceholder: "Nome do artista ou Gênero",
   albums: "Álbuns",
   albumSearch: "Filtrar álbuns",
   albumSearchPlaceholder: "Nome do álbum",
@@ -16,7 +16,6 @@ export const ptBR = {
   of: "de",
   emptyArtists: "Nenhum artista encontrado.",
   emptyAlbums: "Nenhum álbum encontrado.",
-  selectArtist: "Escolha um artista para explorar popularidade, músicas e álbuns.",
   configError:
     "Configure as credenciais do Spotify no arquivo .env.local para consultar a API.",
   genericArtistError: "Não foi possível carregar os artistas.",
