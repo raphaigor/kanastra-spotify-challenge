@@ -4,7 +4,7 @@ import { AlbumPagination } from "@/components/albums/AlbumPagination/AlbumPagina
 import { AlbumSearch } from "@/components/albums/AlbumSearch/AlbumSearch";
 import { EmptyState } from "@/components/common/EmptyState/EmptyState";
 import { ErrorState } from "@/components/common/ErrorState/ErrorState";
-import { LoadingState } from "@/components/common/LoadingState/LoadingState";
+import { AlbumGridSkeleton } from "@/components/common/Skeleton/Skeleton";
 import { ALBUMS_PER_PAGE } from "@/constants/pagination";
 import { useUI } from "@/contexts/UIContext";
 import { useAlbums } from "@/hooks/useAlbums";
@@ -44,11 +44,7 @@ export function AlbumsSection({ artistId }: { artistId: string }) {
           <AlbumSearch onChange={handleAlbumQueryChange} value={albumQuery} />
         </div>
       </div>
-      {albumsQuery.isLoading || albumsQuery.isFetching ? (
-        <div className="mt-5">
-          <LoadingState message={t("loadingAlbums")} />
-        </div>
-      ) : null}
+      {albumsQuery.isLoading ? <AlbumGridSkeleton /> : null}
       {albumsQuery.isError && (
         <div className="mt-5">
           <ErrorState

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { EmptyState } from "@/components/common/EmptyState/EmptyState";
 import { ErrorState } from "@/components/common/ErrorState/ErrorState";
-import { LoadingState } from "@/components/common/LoadingState/LoadingState";
+import { ArtistListSkeleton } from "@/components/common/Skeleton/Skeleton";
 import { ArtistCard } from "@/components/artists/ArtistCard/ArtistCard";
 import { ArtistSearch } from "@/components/artists/ArtistSearch/ArtistSearch";
 import { useUI } from "@/contexts/UIContext";
@@ -33,9 +33,7 @@ export function ArtistList() {
         <h2 className="text-lg font-semibold text-white">{t("allArtists")}</h2>
         {/* <p className="mt-1 text-sm text-neutral-400">{t("heroCopy")}</p> */}
       </div>
-      {artistsQuery.isLoading && (
-        <LoadingState message={t("loadingArtists")} tone="dark" />
-      )}
+      {artistsQuery.isLoading && <ArtistListSkeleton />}
       {artistsQuery.isError && (
         <ErrorState
           message={t("configError")}

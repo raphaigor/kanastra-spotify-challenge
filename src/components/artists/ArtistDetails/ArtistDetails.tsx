@@ -3,7 +3,7 @@ import { ExternalLink, Music2 } from "lucide-react";
 import { AlbumsSection } from "@/components/albums/AlbumsSection/AlbumsSection";
 import { EmptyState } from "@/components/common/EmptyState/EmptyState";
 import { ErrorState } from "@/components/common/ErrorState/ErrorState";
-import { LoadingState } from "@/components/common/LoadingState/LoadingState";
+import { ArtistDetailsSkeleton } from "@/components/common/Skeleton/Skeleton";
 import { Stat } from "@/components/common/Stat/Stat";
 import { TopTracksList } from "@/components/artists/TopTracksList/TopTracksList";
 import { useUI } from "@/contexts/UIContext";
@@ -23,11 +23,7 @@ export function ArtistDetails() {
   }
 
   if (detailQuery.isLoading) {
-    return (
-      <section className="min-h-[520px] rounded-lg bg-neutral-100 p-8">
-        <LoadingState message={t("loadingDetail")} />
-      </section>
-    );
+    return <ArtistDetailsSkeleton />;
   }
 
   if (detailQuery.isError || !detailQuery.data) {

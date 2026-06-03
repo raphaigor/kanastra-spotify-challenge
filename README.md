@@ -16,9 +16,11 @@ A aplicação permite pesquisar artistas, selecionar um resultado, visualizar po
 - Paginação manual de álbuns.
 - Filtro de álbuns por nome.
 - Estados de loading, erro e lista vazia.
+- Skeleton loading para artistas, detalhes e álbuns.
 - Interface responsiva para mobile e desktop.
 - Tradução tokenizada em `pt-BR` e `en-US`.
 - Consumo seguro da API do Spotify via API Routes do Next.js.
+- Testes unitários mínimos com Vitest e React Testing Library.
 
 ## Tecnologias utilizadas
 
@@ -59,7 +61,7 @@ Essa estrutura separa responsabilidades por domínio e por camada. A página pri
 
 ## Padrões de componentização
 
-- **common**: componentes genéricos como `Button`, `Input`, `LoadingState`, `ErrorState`, `EmptyState`, `LanguageSwitcher` e `Stat`.
+- **common**: componentes genéricos como `Button`, `Input`, `Skeleton`, `ErrorState`, `EmptyState`, `LanguageSwitcher` e `Stat`.
 - **artists**: componentes ligados à busca, listagem, card, detalhes e top tracks de artistas.
 - **albums**: componentes ligados à busca, grid, card e paginação de álbuns.
 - **layout**: composição da tela principal, como hero/header e grid responsivo.
@@ -101,6 +103,31 @@ O browser nunca acessa `SPOTIFY_CLIENT_SECRET`. A UI chama apenas rotas internas
 
 Essa separação evita prop drilling, reduz acoplamento e facilita explicar onde cada estado vive.
 
+Na prática, componentes como `ArtistList`, `ArtistDetails` e `AlbumsSection` não precisam receber vários níveis de props. Dados remotos ficam encapsulados nos hooks com React Query, estado global de UI é lido pelo `UIContext`, e interações pontuais como filtro e página atual ficam locais ao componente.
+
+## Testes
+
+Os testes unitários usam Vitest com React Testing Library porque essa combinação valida comportamento de UI com boa velocidade e baixo custo de manutenção.
+
+Foram cobertos pontos críticos para apresentação técnica:
+
+- `ArtistCard`: renderização de nome, popularidade, seguidores e ação de seleção.
+- `AlbumCard`: renderização de nome, imagem, ano e total de faixas.
+- Formatadores: duração, imagem fallback e número compacto.
+- Mappers: garantia de que a UI recebe um contrato próprio e não depende do payload bruto do Spotify.
+
+Para rodar os testes:
+
+```bash
+pnpm test
+```
+
+Para rodar cobertura:
+
+```bash
+pnpm test:coverage
+```
+
 ## Internacionalização
 
 A internacionalização usa dicionários tokenizados em:
@@ -122,7 +149,7 @@ A listagem de álbuns usa paginação manual com 20 itens por página. O filtro 
 
 ```bash
 Node.js 24.16.0
-pnpm 10+
+pnpm 11.5.1
 ```
 
 Crie `.env.local` a partir de `.env.example`:
@@ -156,6 +183,8 @@ http://localhost:3000
 - `pnpm build`: gera a build de produção.
 - `pnpm start`: executa a build de produção.
 - `pnpm lint`: roda o ESLint.
+- `pnpm test`: roda os testes unitários em modo watch.
+- `pnpm test:coverage`: roda os testes e gera relatório de cobertura.
 
 ## Decisões técnicas
 
@@ -166,12 +195,12 @@ http://localhost:3000
 - **Mappers explícitos**: deixam claro onde a resposta da API externa pode ser convertida para modelos internos.
 - **Context API enxuto**: usado apenas para estado global de UI, não para cache de dados remotos.
 - **Debounce nos filtros**: melhora UX e reduz chamadas desnecessárias.
+- **Skeleton loading contextual**: usa placeholders com a mesma estrutura visual da tela final, evitando loaders genéricos em áreas previsíveis.
+- **Testes focados em contrato e comportamento**: cobrem componentes de domínio, utilitários e mappers sem amarrar os testes a detalhes frágeis de implementação.
 
 ## Melhorias futuras
 
-- Testes unitários com Jest ou Vitest.
 - Testes E2E com Cypress.
-- Skeleton loading mais refinado.
 - Animações de transição entre artista e discografia.
 - Persistência do idioma em localStorage.
 - Novos filtros usando gêneros, popularidade ou tipo de lançamento da API do Spotify.
