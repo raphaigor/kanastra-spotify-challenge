@@ -8,7 +8,10 @@ export function HeroHeader() {
     <section className="border-b border-white/10 bg-[#1db954]">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-4 md:px-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
-          <h1 className="text-4xl font-black tracking-normal md:text-6xl">
+          <h1
+            className="text-4xl font-black tracking-normal md:text-6xl"
+            data-testid="hero-title"
+          >
             {t("heroTitle")}
           </h1>
         </div>

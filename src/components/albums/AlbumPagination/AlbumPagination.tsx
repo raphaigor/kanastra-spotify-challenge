@@ -16,7 +16,10 @@ export function AlbumPagination({
   const { t } = useUI();
 
   return (
-    <div className="mt-6 flex flex-col justify-between gap-3 border-t border-neutral-200 pt-5 sm:flex-row sm:items-center">
+    <div
+      className="mt-6 flex flex-col justify-between gap-3 border-t border-neutral-200 pt-5 sm:flex-row sm:items-center"
+      data-testid="albums-pagination"
+    >
       <p className="text-sm font-semibold text-neutral-600">
         {t("page")} {currentPage} {t("of")} {totalPages}
       </p>

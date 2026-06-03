@@ -9,7 +9,10 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "e2e": "start-server-and-test dev http://localhost:3000 cy:run"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.100.14",
@@ -29,9 +32,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitest/coverage-v8": "^4.1.8",
+    "cypress": "^15.16.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
     "jsdom": "^29.1.1",
+    "start-server-and-test": "^3.0.5",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.8"

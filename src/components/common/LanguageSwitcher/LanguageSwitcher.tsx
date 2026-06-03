@@ -8,7 +8,10 @@ export function LanguageSwitcher() {
   const { locale, setLocale, t } = useUI();
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/10 p-1 text-sm text-white">
+    <div
+      className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/10 p-1 text-sm text-white"
+      data-testid="language-switcher"
+    >
       <span className="sr-only">{t("language")}</span>
       {locales.map((item) => (
         <button

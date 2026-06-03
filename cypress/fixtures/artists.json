@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "id": "coldplay",
+      "name": "Coldplay",
+      "popularity": 91,
+      "genres": ["permanent wave", "pop"],
+      "images": [],
+      "followers": {
+        "total": 54000000
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/coldplay"
+      }
+    },
+    {
+      "id": "coldplay-tribute",
+      "name": "Coldplay Tribute",
+      "popularity": 38,
+      "genres": ["tribute"],
+      "images": [],
+      "followers": {
+        "total": 12000
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/coldplay-tribute"
+      }
+    }
+  ],
+  "total": 2,
+  "limit": 24,
+  "offset": 0
+}

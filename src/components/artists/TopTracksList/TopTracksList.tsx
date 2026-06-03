@@ -39,7 +39,7 @@ function TrackRow({ track, index }: { track: Track; index: number }) {
 
 export function TopTracksList({ tracks, title }: { tracks: Track[]; title: string }) {
   return (
-    <section className="mt-8">
+    <section className="mt-8" data-testid="top-tracks-section">
       <h2 className="text-2xl font-bold text-neutral-950">{title}</h2>
       <div className="mt-4 grid gap-3">
         {tracks.slice(0, 6).map((track, index) => (

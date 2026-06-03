@@ -38,6 +38,7 @@ export function ArtistDetails() {
   return (
     <section
       className="animate-fade-slide-up overflow-hidden rounded-lg bg-neutral-100 shadow-2xl shadow-black/20"
+      data-testid="artist-details"
       key={artist.id}
     >
       <div className="relative min-h-[260px] bg-neutral-950 p-6 text-white md:p-8">

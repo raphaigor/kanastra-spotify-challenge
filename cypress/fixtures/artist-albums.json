@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "id": "parachutes",
+      "name": "Parachutes",
+      "album_type": "album",
+      "release_date": "2000-07-10",
+      "total_tracks": 10,
+      "images": [],
+      "external_urls": { "spotify": "https://open.spotify.com/album/parachutes" }
+    },
+    {
+      "id": "rush",
+      "name": "A Rush of Blood to the Head",
+      "album_type": "album",
+      "release_date": "2002-08-26",
+      "total_tracks": 11,
+      "images": [],
+      "external_urls": { "spotify": "https://open.spotify.com/album/rush" }
+    },
+    {
+      "id": "xy",
+      "name": "X&Y",
+      "album_type": "album",
+      "release_date": "2005-06-06",
+      "total_tracks": 13,
+      "images": [],
+      "external_urls": { "spotify": "https://open.spotify.com/album/xy" }
+    },
+    {
+      "id": "viva",
+      "name": "Viva La Vida or Death and All His Friends",
+      "album_type": "album",
+      "release_date": "2008-06-12",
+      "total_tracks": 10,
+      "images": [],
+      "external_urls": { "spotify": "https://open.spotify.com/album/viva" }
+    }
+  ],
+  "total": 24,
+  "rawTotal": 24,
+  "limit": 20,
+  "offset": 0
+}

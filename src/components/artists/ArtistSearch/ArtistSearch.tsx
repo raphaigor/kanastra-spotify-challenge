@@ -11,6 +11,7 @@ export function ArtistSearch({ value, onChange }: ArtistSearchProps) {
 
   return (
     <Input
+      data-testid="artist-search-input"
       label={t("artistSearch")}
       onChange={(event) => onChange(event.target.value)}
       placeholder={t("artistSearchPlaceholder")}

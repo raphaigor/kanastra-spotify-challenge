@@ -21,6 +21,7 @@ export function ArtistCard({ artist }: ArtistCardProps) {
           ? "border-emerald-300 bg-emerald-300/15 shadow-lg shadow-emerald-950/20 hover:shadow-xl hover:shadow-emerald-950/30"
           : "border-white/10 bg-white/[0.07] shadow-sm shadow-black/10 hover:border-emerald-300/70 hover:bg-white/[0.11] hover:shadow-xl hover:shadow-emerald-950/25",
       )}
+      data-testid="artist-card"
       onClick={() => setSelectedArtistId(artist.id)}
       type="button"
     >

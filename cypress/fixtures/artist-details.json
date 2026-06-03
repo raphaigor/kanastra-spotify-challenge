@@ -1,0 +1,45 @@
+{
+  "artist": {
+    "id": "coldplay",
+    "name": "Coldplay",
+    "popularity": 91,
+    "genres": ["permanent wave", "pop"],
+    "images": [],
+    "followers": {
+      "total": 54000000
+    },
+    "external_urls": {
+      "spotify": "https://open.spotify.com/artist/coldplay"
+    }
+  },
+  "topTracks": [
+    {
+      "id": "yellow",
+      "name": "Yellow",
+      "popularity": 89,
+      "preview_url": null,
+      "duration_ms": 266773,
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/yellow"
+      },
+      "album": {
+        "name": "Parachutes",
+        "images": []
+      }
+    },
+    {
+      "id": "clocks",
+      "name": "Clocks",
+      "popularity": 85,
+      "preview_url": null,
+      "duration_ms": 307879,
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/clocks"
+      },
+      "album": {
+        "name": "A Rush of Blood to the Head",
+        "images": []
+      }
+    }
+  ]
+}

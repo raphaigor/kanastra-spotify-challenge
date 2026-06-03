@@ -11,6 +11,7 @@ export function AlbumSearch({ value, onChange }: AlbumSearchProps) {
 
   return (
     <Input
+      data-testid="album-search-input"
       label={t("albumSearch")}
       onChange={(event) => onChange(event.target.value)}
       placeholder={t("albumSearchPlaceholder")}

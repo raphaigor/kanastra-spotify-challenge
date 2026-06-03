@@ -32,7 +32,7 @@ export function AlbumsSection({ artistId }: { artistId: string }) {
   };
 
   return (
-    <section className="mt-8">
+    <section className="mt-8" data-testid="albums-section">
       <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
         <div>
           <h3 className="text-2xl font-bold text-neutral-950">{t("albums")}</h3>

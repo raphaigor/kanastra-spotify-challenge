@@ -24,6 +24,7 @@ A aplicação permite pesquisar artistas, selecionar um resultado, visualizar po
 - Persistência do idioma em `localStorage` para manter a preferência em futuras entradas na tela.
 - Consumo seguro da API do Spotify via API Routes do Next.js.
 - Testes unitários mínimos com Vitest e React Testing Library.
+- Testes E2E com Cypress usando mocks da API interna.
 
 ## Tecnologias utilizadas
 
@@ -36,10 +37,17 @@ A aplicação permite pesquisar artistas, selecionar um resultado, visualizar po
 - **Context API**: mantém estado global de UI, como idioma e artista selecionado, sem prop drilling.
 - **Spotify Web API**: fonte dos dados de artistas, músicas e álbuns.
 - **Tradução tokenizada**: dicionários tipados em `pt-BR` e `en-US` para textos de interface.
+- **Vitest + React Testing Library**: validam componentes, formatadores e mappers com testes unitários rápidos.
+- **Cypress**: valida o fluxo principal da aplicação com testes E2E e mocks da API interna.
 
 ## Arquitetura do projeto
 
 ```text
+cypress/
+  e2e/                  # Testes E2E do fluxo principal
+  fixtures/             # Mocks usados pelo Cypress
+  support/              # Configurações e comandos de suporte
+
 src/
   app/
     api/                  # API Routes seguras do Next.js
@@ -61,6 +69,8 @@ src/
 ```
 
 Essa estrutura separa responsabilidades por domínio e por camada. A página principal não contém regra de request nem marcação extensa; ela apenas renderiza o `SpotifyExplorer`.
+
+Os testes E2E ficam fora de `src` porque validam a aplicação pelo ponto de vista do usuário, usando o app em execução e interceptando as rotas internas do Next.js.
 
 ## Padrões de componentização
 
@@ -108,7 +118,7 @@ Essa separação evita prop drilling, reduz acoplamento e facilita explicar onde
 
 Na prática, componentes como `ArtistList`, `ArtistDetails` e `AlbumsSection` não precisam receber vários níveis de props. Dados remotos ficam encapsulados nos hooks com React Query, estado global de UI é lido pelo `UIContext`, e interações pontuais como filtro e página atual ficam locais ao componente.
 
-## Testes
+## Testes unitários
 
 Os testes unitários usam Vitest com React Testing Library porque essa combinação valida comportamento de UI com boa velocidade e baixo custo de manutenção.
 
@@ -129,6 +139,30 @@ Para rodar cobertura:
 
 ```bash
 pnpm test:coverage
+```
+
+## Testes E2E com Cypress
+
+Os testes E2E usam Cypress e interceptam as chamadas da API interna com `cy.intercept`. Dessa forma, o fluxo principal é validado sem depender da API real do Spotify, de credenciais locais ou da disponibilidade externa do serviço.
+
+O fluxo coberto pelo Cypress inclui carregamento da home, busca por artista, seleção, visualização de detalhes, top músicas, álbuns, filtro de álbum, paginação, troca de idioma e persistência do idioma após reload.
+
+Para abrir o Cypress:
+
+```bash
+pnpm cy:open
+```
+
+Para rodar em modo headless:
+
+```bash
+pnpm cy:run
+```
+
+Para subir o servidor local e rodar o E2E em sequência:
+
+```bash
+pnpm e2e
 ```
 
 ## Internacionalização
@@ -190,6 +224,9 @@ http://localhost:3000
 - `pnpm lint`: roda o ESLint.
 - `pnpm test`: roda os testes unitários em modo watch.
 - `pnpm test:coverage`: roda os testes e gera relatório de cobertura.
+- `pnpm cy:open`: abre a interface do Cypress.
+- `pnpm cy:run`: executa os testes E2E em modo headless.
+- `pnpm e2e`: sobe o app local e executa os testes E2E com mocks.
 
 ## Decisões técnicas
 
@@ -204,8 +241,4 @@ http://localhost:3000
 - **Skeleton loading contextual**: usa placeholders com a mesma estrutura visual da tela final, evitando loaders genéricos em áreas previsíveis.
 - **Animações sem biblioteca externa**: transições sutis com Tailwind CSS e CSS nativo, respeitando `prefers-reduced-motion`.
 - **Testes focados em contrato e comportamento**: cobrem componentes de domínio, utilitários e mappers sem amarrar os testes a detalhes frágeis de implementação.
-
-## Melhorias futuras
-
-- Testes E2E com Cypress.
-- Novos filtros usando gêneros, popularidade ou tipo de lançamento da API do Spotify.
+- **E2E com mocks da API interna**: Cypress valida o fluxo crítico usando fixtures e `cy.intercept`, evitando dependência da Spotify Web API nos testes automatizados.

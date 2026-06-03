@@ -9,6 +9,7 @@ export function AlbumCard({ album }: { album: Album }) {
   return (
     <a
       className="group rounded-lg border border-neutral-200 bg-white p-3 shadow-sm shadow-neutral-950/5 transition-all duration-200 ease-out hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-950/15 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02]"
+      data-testid="album-card"
       href={album.external_urls.spotify}
       rel="noreferrer"
       target="_blank"
